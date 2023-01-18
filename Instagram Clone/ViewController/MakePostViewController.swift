@@ -22,7 +22,7 @@ class MakePostViewController: UIViewController,UIImagePickerControllerDelegate,U
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
 
     }
