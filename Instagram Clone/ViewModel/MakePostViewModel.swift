@@ -11,10 +11,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import UIKit
 class MakePostViewModel{
-    let controller:UIViewController
-    init(controller: UIViewController) {
-        self.controller = controller
-    }
+
     func saveImage(selectedImage:UIImageView,description:String,completion:@escaping(AlertModel) -> Void) {
         let storage = Storage.storage().reference()
         let imagens = storage.child("Imagens")

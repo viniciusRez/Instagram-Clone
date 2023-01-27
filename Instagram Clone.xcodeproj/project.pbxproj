@@ -22,7 +22,7 @@
 		A190E0022976F96C0044FFD1 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190E0012976F96C0044FFD1 /* AlertModel.swift */; };
 		A190E0042976FE670044FFD1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190E0032976FE670044FFD1 /* HomeViewController.swift */; };
 		A190E0062976FE710044FFD1 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190E0052976FE710044FFD1 /* UsersViewController.swift */; };
-		A1AA5DFC2978062F0087DE05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5DFB2978062F0087DE05 /* HomeViewModel.swift */; };
+		A1AA5DFC2978062F0087DE05 /* GetPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5DFB2978062F0087DE05 /* GetPostViewModel.swift */; };
 		A1AA5DFE2978063F0087DE05 /* MakePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5DFD2978063F0087DE05 /* MakePostViewModel.swift */; };
 		A1AA5E00297806F80087DE05 /* MakePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5DFF297806F70087DE05 /* MakePostViewController.swift */; };
 		A1AA5E0329780D8B0087DE05 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A1AA5E0229780D8B0087DE05 /* FirebaseAuth */; };
@@ -34,7 +34,7 @@
 		A1AA5E102978299B0087DE05 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5E0F2978299B0087DE05 /* UserViewModel.swift */; };
 		A1AA5E12297835C10087DE05 /* PostsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5E11297835C10087DE05 /* PostsCollectionViewController.swift */; };
 		A1AA5E14297835DB0087DE05 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5E13297835DB0087DE05 /* MyCollectionViewCell.swift */; };
-		A1AA5E16297836C70087DE05 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA5E15297836C70087DE05 /* CollectionViewModel.swift */; };
+		A1B47CAB2983FAD300DEFC4D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B47CAA2983FAD300DEFC4D /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,6 @@
 		A190DFD42976EEB00044FFD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A190DFD62976EEB00044FFD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A190DFD92976EEB00044FFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A190DFDC2976EEB00044FFD1 /* Instagram_Clone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Instagram_Clone.xcdatamodel; sourceTree = "<group>"; };
 		A190DFDE2976EEB10044FFD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A190DFE12976EEB10044FFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A190DFE32976EEB10044FFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,14 +55,14 @@
 		A190E0012976F96C0044FFD1 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		A190E0032976FE670044FFD1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A190E0052976FE710044FFD1 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
-		A1AA5DFB2978062F0087DE05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A1AA5DFB2978062F0087DE05 /* GetPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostViewModel.swift; sourceTree = "<group>"; };
 		A1AA5DFD2978063F0087DE05 /* MakePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostViewModel.swift; sourceTree = "<group>"; };
 		A1AA5DFF297806F70087DE05 /* MakePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostViewController.swift; sourceTree = "<group>"; };
 		A1AA5E0A29781B300087DE05 /* MyCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCellTableViewCell.swift; sourceTree = "<group>"; };
 		A1AA5E0F2978299B0087DE05 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		A1AA5E11297835C10087DE05 /* PostsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCollectionViewController.swift; sourceTree = "<group>"; };
 		A1AA5E13297835DB0087DE05 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
-		A1AA5E15297836C70087DE05 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
+		A1B47CAA2983FAD300DEFC4D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +100,7 @@
 		A190DFD12976EEB00044FFD1 /* Instagram Clone */ = {
 			isa = PBXGroup;
 			children = (
+				A1B47CA92983FA8500DEFC4D /* cells */,
 				A190DFFC2976F5820044FFD1 /* Models */,
 				A190DFF72976F5520044FFD1 /* ViewModel */,
 				A190DFF42976F5280044FFD1 /* ViewController */,
@@ -110,7 +110,6 @@
 				A190DFDE2976EEB10044FFD1 /* Assets.xcassets */,
 				A190DFE02976EEB10044FFD1 /* LaunchScreen.storyboard */,
 				A190DFE32976EEB10044FFD1 /* Info.plist */,
-				A190DFDB2976EEB00044FFD1 /* Instagram_Clone.xcdatamodeld */,
 				A190DFE92976EEF10044FFD1 /* GoogleService-Info.plist */,
 			);
 			path = "Instagram Clone";
@@ -134,10 +133,10 @@
 			children = (
 				A190DFF82976F56C0044FFD1 /* LoginViewModel.swift */,
 				A190DFFA2976F5790044FFD1 /* RegisterViewModel.swift */,
-				A1AA5DFB2978062F0087DE05 /* HomeViewModel.swift */,
+				A1AA5DFB2978062F0087DE05 /* GetPostViewModel.swift */,
 				A1AA5DFD2978063F0087DE05 /* MakePostViewModel.swift */,
 				A1AA5E0F2978299B0087DE05 /* UserViewModel.swift */,
-				A1AA5E15297836C70087DE05 /* CollectionViewModel.swift */,
+				A1B47CAA2983FAD300DEFC4D /* Router.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -148,10 +147,17 @@
 				A190DFFD2976F5990044FFD1 /* PostagemModel.swift */,
 				A190DFFF2976F5AA0044FFD1 /* UserModel.swift */,
 				A190E0012976F96C0044FFD1 /* AlertModel.swift */,
-				A1AA5E0A29781B300087DE05 /* MyCellTableViewCell.swift */,
-				A1AA5E13297835DB0087DE05 /* MyCollectionViewCell.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A1B47CA92983FA8500DEFC4D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				A1AA5E13297835DB0087DE05 /* MyCollectionViewCell.swift */,
+				A1AA5E0A29781B300087DE05 /* MyCellTableViewCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,11 +254,11 @@
 				A190DFD32976EEB00044FFD1 /* AppDelegate.swift in Sources */,
 				A190DFD52976EEB00044FFD1 /* SceneDelegate.swift in Sources */,
 				A1AA5E102978299B0087DE05 /* UserViewModel.swift in Sources */,
-				A1AA5DFC2978062F0087DE05 /* HomeViewModel.swift in Sources */,
+				A1AA5DFC2978062F0087DE05 /* GetPostViewModel.swift in Sources */,
+				A1B47CAB2983FAD300DEFC4D /* Router.swift in Sources */,
 				A190E0042976FE670044FFD1 /* HomeViewController.swift in Sources */,
 				A1AA5E00297806F80087DE05 /* MakePostViewController.swift in Sources */,
 				A190E0002976F5AA0044FFD1 /* UserModel.swift in Sources */,
-				A1AA5E16297836C70087DE05 /* CollectionViewModel.swift in Sources */,
 				A190E0022976F96C0044FFD1 /* AlertModel.swift in Sources */,
 				A190DFFE2976F5990044FFD1 /* PostagemModel.swift in Sources */,
 				A1AA5E12297835C10087DE05 /* PostsCollectionViewController.swift in Sources */,
@@ -518,19 +524,6 @@
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		A190DFDB2976EEB00044FFD1 /* Instagram_Clone.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A190DFDC2976EEB00044FFD1 /* Instagram_Clone.xcdatamodel */,
-			);
-			currentVersion = A190DFDC2976EEB00044FFD1 /* Instagram_Clone.xcdatamodel */;
-			path = Instagram_Clone.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A190DFC72976EEB00044FFD1 /* Project object */;
 }

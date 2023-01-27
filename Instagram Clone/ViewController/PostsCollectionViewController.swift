@@ -12,10 +12,10 @@ private let reuseIdentifier = "Cell"
 class PostsCollectionViewController: UICollectionViewController {
     var selectedUser:Dictionary<String,Any>!
     var listOfPosts:[Dictionary<String,Any>] = []
-    var collectionViewModel:CollectionViewModel!
+    var collectionViewModel:GetPostViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionViewModel = CollectionViewModel(selectedUser:self.selectedUser)
+        self.collectionViewModel = GetPostViewModel(controller: self)
         self.reloadData()
 
         // Do any additional setup after loading the view.
@@ -26,7 +26,7 @@ class PostsCollectionViewController: UICollectionViewController {
         
     }
    func reloadData(){
-        self.collectionViewModel.getPosts { result in
+       self.collectionViewModel.getPostsForId(selectedUser: self.selectedUser) { result in
             self.listOfPosts = result
             self.collectionView.reloadData()
         }
@@ -73,17 +73,10 @@ class PostsCollectionViewController: UICollectionViewController {
         } else {
             cell.image.isHidden = false
             let postagem = self.listOfPosts[indexPath.row]
-            if let url = URL(string: (postagem["url"] as! String)) {
+            if let URL = URL(string: (postagem["url"] as! String)) {
                 
-                cell.image.kf.setImage(with: url){result in
-                    switch result {
-                    case .success:
-                        cell.load.stopAnimating()
-                    case .failure(let error):
-                        print("Job failed: \(error.localizedDescription)")
-                    }
-                }
-                
+                cell.image.setImageFromUrl(URL:URL)
+                cell.load.stopAnimating()
                 cell.descricao.text = postagem["descricao"] as? String
             }
             

@@ -10,11 +10,8 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class UserViewModel{
-    let controller: UIViewController
-    init(controller: UIViewController) {
-        self.controller = controller
-    }
+class UserViewModel:Router{
+
     func getPosts(completion:@escaping([Dictionary<String,Any>]) -> Void){
         let firestore = Firestore.firestore()
         var listOfPost:[Dictionary<String,Any>] = []
@@ -42,8 +39,6 @@ class UserViewModel{
             completion(itemFilter)
         }
     }
-    func router(identifier:String,sender:Any?){
-        self.controller.performSegue(withIdentifier: identifier, sender: sender)
-    }
+ 
 
 }

@@ -16,7 +16,7 @@ class MakePostViewController: UIViewController,UIImagePickerControllerDelegate,U
         self.imagePicker = UIImagePickerController()
         self.imagePicker.delegate = self
         
-        self.makePostViewModel = MakePostViewModel(controller: self)
+        self.makePostViewModel = MakePostViewModel()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
