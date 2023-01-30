@@ -8,29 +8,30 @@
 import UIKit
 import Kingfisher
 class HomeViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
-   
+    var router: Router!
+    var viewModel: PostsViewModel!
     var listOfPosts:[Dictionary<String,Any>] = []
-    var homeViewModel:HomeViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.homeViewModel = HomeViewModel(controller: self)
+        self.router = Router(controller: self)
+        self.viewModel = PostsViewModel(controller: self)
 
-        // Do any additional setup after loading the view.
+
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         self.reloadData()
-
     }
     func reloadData(){
-        self.homeViewModel.getPosts { result in
+        self.viewModel.getPosts { result in
             self.listOfPosts = result
             self.tableView.reloadData()
         }
     }
     @IBOutlet var tableView: UITableView!
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if listOfPosts.isEmpty {
@@ -54,17 +55,10 @@ class HomeViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             cell.postImage.isHidden = false
 
             let postagem = self.listOfPosts[indexPath.row]
-            if let url = URL(string: (postagem["url"] as! String)) {
+            if let URL = URL(string: (postagem["url"] as! String)) {
                 
-                cell.postImage.kf.setImage(with: url){result in
-                    switch result {
-                    case .success:
-                        cell.load.stopAnimating()
-                    case .failure(let error):
-                        print("Job failed: \(error.localizedDescription)")
-                    }
-                }
-                
+                cell.postImage.setImageFromUrl(URL: URL)
+                cell.load.stopAnimating()
                 cell.descricao.text = postagem["descricao"] as? String
             }
             
@@ -73,7 +67,7 @@ class HomeViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     
     @IBAction func makePost(_ sender: Any) {
-        self.homeViewModel.router(identifier: "makepost")
+        self.router.router(identifier: "makepost", sender: nil)
     }
     /*
     // MARK: - Navigation
@@ -85,4 +79,22 @@ class HomeViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     */
 
+}
+
+extension UIImageView{
+    
+    func setImageFromUrl(URL:URL,mainQueue:DispatchQueue =  .main){
+        mainQueue.async {
+            self.kf.setImage(with: URL,completionHandler: {result in
+               switch result {
+               case .success:
+                   print("Job OK")
+               case .failure(let error):
+                   print("Job failed: \(error.localizedDescription)")
+               }
+           })
+
+        }
+        
+    }
 }

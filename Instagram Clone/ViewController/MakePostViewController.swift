@@ -9,20 +9,20 @@ import UIKit
 
 class MakePostViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     var imagePicker:UIImagePickerController!
-    var makePostViewModel:MakePostViewModel!
     var infoPost:PostModel!
+    var viewModel: PostsViewModel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = PostsViewModel(controller: self)
         self.imagePicker = UIImagePickerController()
         self.imagePicker.delegate = self
-        
-        self.makePostViewModel = MakePostViewModel(controller: self)
-        // Do any additional setup after loading the view.
+
     }
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
 
     }
@@ -52,19 +52,29 @@ class MakePostViewController: UIViewController,UIImagePickerControllerDelegate,U
     }
     @IBOutlet weak var savePost: UIButton!
     @IBAction func savePost(_ sender: Any) {
-        self.savePost.setTitle("loading...", for: .normal)
-        self.makePostViewModel.saveImage(selectedImage: self.imageview, description: self.descricao.text!) { alert in
-            alert.returnToControll(controller: self)
+        
+        print(self.imageview.image?.assetName as Any)
+        if self.imageview.image?.assetName != "padrao" {
+            self.savePost.setTitle("loading...", for: .normal)
+            self.viewModel.saveImage(selectedImage: self.imageview, description: self.descricao.text!) { alert in
+                self.present(alert, animated: true)
+                
+            }
+        }else{
+            let alert = AlertModel(mensagem: "Selecione uma imagem", titulo: "Imagem não selecionada")
+            self.present(alert.makeAlert(), animated: true)
+
         }
     }
-    /*
-    // MARK: - Navigation
+}
+extension UIImage {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    var containingBundle: Bundle? {
+        imageAsset?.value(forKey: "containingBundle") as? Bundle
     }
-    */
+
+    var assetName: String? {
+        imageAsset?.value(forKey: "assetName") as? String
+    }
 
 }

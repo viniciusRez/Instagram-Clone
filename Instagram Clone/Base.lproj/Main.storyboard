@@ -426,7 +426,7 @@
         <!--Nova Postagem-->
         <scene sceneID="SjM-Bs-6M2">
             <objects>
-                <viewController id="Fcv-mx-hrh" customClass="MakePostViewController" customModule="Instagram_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Fcv-mx-hrh" customClass="MakePostViewController" customModule="Instagram_Clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q5e-EK-NPU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

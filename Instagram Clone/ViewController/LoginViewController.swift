@@ -8,10 +8,22 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    var loginViewModel: LoginViewModel!
+    var router: Router!
+    var viewModel: UserViewModel!
+    
+
     override func viewDidLoad() {
-        self.loginViewModel = LoginViewModel(controller: self)
-        self.loginViewModel.checkIsLogged()
+        self.router = Router(controller: self)
+        self.viewModel = UserViewModel()
+
+        self.viewModel.checkIsLogged(){ result in
+            if result {
+                self.router.router(identifier: "inside", sender: nil)
+            }else{
+                
+            }
+            
+        }
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -19,7 +31,7 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     @IBAction func unwindToLogin(_ unwindSegue: UIStoryboardSegue) {
-        self.loginViewModel.singOut()
+        self.viewModel.singOut()
         // Use data from the view controller which initiated the unwind segue
     }
     @IBOutlet var email: UITextField!
@@ -28,7 +40,7 @@ class LoginViewController: UIViewController {
         if let email = self.email.text{
             if let senha = self.senha.text{
                 
-                self.loginViewModel.login(email:email,senha:senha, completion: {(result,alert) in
+                self.viewModel.login(email:email,senha:senha, completion: {(result,alert) in
                    
                     self.present(alert.makeAlert(), animated: true)
                     
@@ -39,7 +51,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
-        self.loginViewModel.router(identifier: "register")
+        self.router.router(identifier: "register", sender: nil)
     }
     
 }

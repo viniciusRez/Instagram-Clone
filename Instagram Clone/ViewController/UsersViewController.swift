@@ -9,14 +9,16 @@ import UIKit
 
 class UsersViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate{
     
-    var listOfUsers:[Dictionary<String,Any>] = []
-    var userViewMolde:UserViewModel!
+    var listOfUsers:[UserModel] = []
+    var router: Router!
+    var viewModel: UserViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userViewMolde = UserViewModel(controller: self)
+        self.viewModel = UserViewModel()
+        self.router = Router(controller: self)
         self.searchBarUser.delegate = self
         
-        // Do any additional setup after loading the view.
     }
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBarUser: UISearchBar!
@@ -24,7 +26,7 @@ class UsersViewController: UIViewController ,UITableViewDelegate,UITableViewData
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.userViewMolde.getPosts { result in
+        self.viewModel.getUsers { result in
             self.listOfUsers = result
             self.tableView.reloadData()
 
@@ -34,7 +36,7 @@ class UsersViewController: UIViewController ,UITableViewDelegate,UITableViewData
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let textSearch = searchBar.text{
             if textSearch != ""{
-                self.userViewMolde.searchUser(text: textSearch) { result in
+                self.viewModel.searchUser(text: textSearch) { result in
                     self.listOfUsers = result
                     self.tableView.reloadData()
                 }
@@ -60,15 +62,15 @@ class UsersViewController: UIViewController ,UITableViewDelegate,UITableViewData
         {   cell.textLabel!.text = "Nenhuma usuario encontrado."
         }else {
             let postagem = self.listOfUsers[indexPath.row]
-            cell.textLabel!.text = postagem["nome"] as? String
-            cell.detailTextLabel!.text = postagem["email"] as? String
+            cell.textLabel!.text = postagem.nome
+            cell.detailTextLabel!.text = postagem.email
         }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedUser = self.listOfUsers[indexPath.row]
         self.tableView.deselectRow(at: indexPath, animated: true)
-        self.userViewMolde.router(identifier: "showPost", sender: selectedUser)
+        self.router.router(identifier: "showPost", sender: selectedUser)
         
     }
  
@@ -81,7 +83,7 @@ class UsersViewController: UIViewController ,UITableViewDelegate,UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPost"{
             let viewdestination = segue.destination as!  PostsCollectionViewController
-            viewdestination.selectedUser = sender as? Dictionary
+            viewdestination.selectedUser = sender as? UserModel
         }
     }
 }
