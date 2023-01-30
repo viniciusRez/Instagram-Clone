@@ -8,11 +8,21 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-    var registerViewModel:RegisterViewModel!
+    var router: Router!
+    var viewModel: UserViewModel
+    
+    init() {
+        self.viewModel = UserViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.registerViewModel = RegisterViewModel()
-        // Do any additional setup after loading the view.
+        self.router = Router(controller: self)
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -26,7 +36,7 @@ class RegisterViewController: UIViewController {
             if let email = self.email.text{
                 if let senha = self.senha.text{
                     
-                    self.registerViewModel.register(email:email,senha:senha,nome:nome, completion: {(result,alert) in
+                    self.viewModel.register(email:email,senha:senha,nome:nome, completion: {(result,alert) in
                         self.present(alert.makeAlert(), animated: true)
                     })
 

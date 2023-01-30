@@ -15,5 +15,9 @@ class Router{
     func router(identifier:String,sender:Any?){
         self.controller.performSegue(withIdentifier: identifier, sender: sender)
     }
+    func dimiss(){
+        self.controller.navigationController?.popToRootViewController(animated: true)
+        
+    }
 }
 
